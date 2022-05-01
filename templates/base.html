@@ -1,0 +1,34 @@
+<hr>
+{% if user.is_authenticated %}
+    <div>
+        <a href="{% url 'acc:index' %}" class="menu">HOME</a>
+        <a href="{% url 'board:index' %}" class="menu">BOARD</a>
+        <a href="{% url 'acc:profile' %}" class="menu">PROFILE</a>
+        <a href="{% url 'acc:logout' %}" class="menu">LOGOUT</a>
+        접속중인 계정 : {{user}}
+    </div>
+{% else %}
+    <div>
+        <a href="{% url 'acc:index' %}" class="menu">HOME</a>
+        <a href="{% url 'acc:login' %}" class="menu">LOGIN</a>
+        <a href="{% url 'acc:signup' %}" class="menu">SIGNUP</a>
+    </div>
+{% endif %}
+
+<hr>
+
+{% block con %}
+{% endblock %}
+
+<style>
+    .menu{
+        text-decoration: none;
+        font-size: 25px;
+        color:black;
+        font-weight: bold;
+        margin-right: 30px;
+    }
+    .menu:hover{
+        color:blue;
+    }
+</style>

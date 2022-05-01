@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block con %}
+    
+    <br><br>
+    <h1>BOARD PAGE</h1>
+
+    <a href="{% url 'board:create' %}"><button>글작성</button></a>
+    <br><br>
+
+    <table border="1">
+        <tr>
+            <th>NO</th>
+            <th>SUBJECT</th>
+            <th>SUMMARY</th>
+            <th>WRITER</th>
+            <th>LIKEY</th>
+        </tr>
+        {% if bset %}
+            {% for i in bset %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'board:detail' i.id %}">{{ i.subject }}</a></td>
+                    <td>{{ i.summary }}</td>
+                    <td>{{ i.writer }}</td>
+                    <td>0</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <th colspan="5">첫번째 게시글을 작성해주세요 🤣</th>
+            </tr>
+        {% endif %}
+    </table>
+
+{% endblock %}
